@@ -11,6 +11,7 @@ public class Main {
         minSalary();
         printNameEmployee();
         average();
+
     }
 
     public static void getAListOfAllEmployee() {
@@ -38,10 +39,15 @@ public class Main {
         employee[8] = new Employee("Вася", 4, 20120, Employee.counter);
         employee[9] = new Employee("Кирилл", 5, 20310, Employee.counter);
         int total = 0;
+        int y = 0;
+
         for (int i = 0; i < employee.length; i++) {
             total += employee[i].getSalary();
+            y++;
         }
+        double average = total / y;
         System.out.println("total = " + total);
+        System.out.println("average = " + average);
         return total;
     }
 
@@ -62,6 +68,8 @@ public class Main {
             int salary = employee[i].getSalary();
             if (max < salary && employee != null) {
                 max = salary;
+
+
             }
         }
         System.out.println("max = " + max);
@@ -111,12 +119,33 @@ public class Main {
             System.out.println("employee[i].getName() = " + employee[j].getName());
         }
     }
+    public static int average() {
 
-    public static void average() {
-      double average = totalSalary()/employee[0].getCounter();
+        employee[0] = new Employee("Василий", 1, 150_000, Employee.counter);
+        employee[1] = new Employee("Кирилл", 2, 200, Employee.counter);
+        employee[2] = new Employee("Петя", 3, 20222, Employee.counter);
+        employee[3] = new Employee("Вася", 4, 20120, Employee.counter);
+        employee[4] = new Employee("Кирилл", 5, 20310, Employee.counter);
+        employee[5] = new Employee("Василий", 1, 150_000, Employee.counter);
+        employee[6] = new Employee("Кирилл", 2, 200, Employee.counter);
+        employee[7] = new Employee("Петя", 3, 20222, Employee.counter);
+        employee[8] = new Employee("Вася", 4, 20120, Employee.counter);
+        employee[9] = new Employee("Кирилл", 5, 20310, Employee.counter);
+        int total = 0;
+        int y = 0;
+
+        for (int i = 0; i < employee.length; i++) {
+            total += employee[i].getSalary();
+            y++;
+        }
+        double average = total / y;
         System.out.println("average = " + average);
+        return (int) average;
     }
-}
+
+    }
+
+
 
 
 
