@@ -30,7 +30,7 @@ public class Employee {
         return this.id;
     }
 
-    public int getCounter() {
+    public static int getCounter() {
         return counter;
     }
 

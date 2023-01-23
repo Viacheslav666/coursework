@@ -16,11 +16,13 @@ public class Main {
         employee[8] = new Employee("Вася", 4, 20120, Employee.counter);
         employee[9] = new Employee("Кирилл", 5, 20310, Employee.counter);
         getAListOfAllEmployee();
-        totalSalary();
+        System.out.println("total = " + totalSalary());
         maxSalary();
         minSalary();
         printNameEmployee();
         average();
+        indexing(10);
+        System.out.println("getAMaximumWageEmployee(2) = " + getAMaximumWageEmployee(2));
 
     }
 
@@ -39,9 +41,6 @@ public class Main {
             total += employee[i].getSalary();
             y++;
         }
-        double average = total / y;
-        System.out.println("total = " + total);
-        System.out.println("average = " + average);
         return total;
     }
 
@@ -62,7 +61,7 @@ public class Main {
         int min = employee[0].getSalary();
         for (int i = 0; i < employee.length; i++) {
             int salary = employee[i].getSalary();
-            if (min > salary) {
+            if (min > salary && employee != null) {
                 min = salary;
             }
         }
@@ -81,7 +80,7 @@ public class Main {
     }
 
     public static int average() {
-        int total = 0;
+        double total = 0;
         int y = 0;
 
         for (int i = 0; i < employee.length; i++) {
@@ -92,9 +91,57 @@ public class Main {
         System.out.println("average = " + average);
         return (int) average;
     }
+
+    public static void indexing(int percent) {
+        for (Employee employee : employee) {
+            int currentSalary = employee.getSalary();
+            employee.setSalary((int) (currentSalary * (percent / 100f + 1)));
+            System.out.println(employee.getName() + " employee.getSalary() = " + employee.getSalary());
+        }
+    }
+
+    public static Employee getAMaximumWageEmployee(int deportament) {
+        int maxSalary = Integer.MIN_VALUE;
+        Employee result = null;
+        for (Employee employee : employee) {
+            if (employee.getDepartment() != deportament) {
+                continue;
+            }
+            if (maxSalary < employee.getSalary()) {
+                maxSalary = employee.getSalary();
+                result = employee;
+            }
+        }
+        return result;
+    }
+
+    public static Employee getAMinimumWageEmployee(int Department) {
+        int minSalary = Integer.MAX_VALUE;
+        Employee result = null;
+        for (Employee employee : employee) {
+            if (employee.getDepartment() != Department) {
+                continue;
+            }
+            if (minSalary < employee.getSalary()) {
+                minSalary = employee.getSalary();
+                result = employee;
+            }
+        }
+        return result;
+    }
+
+    public static int totalSalaryOfTheDepartment(int department) {
+        int sum = 0;
+        for (Employee employee : employee) {
+            if (employee.getDepartment() == department) {
+                sum += employee.getSalary();
+            }
+
+        }
+        return sum;
+    }
+
 }
-
-
 
 
 
