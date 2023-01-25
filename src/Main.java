@@ -10,10 +10,10 @@ public class Main {
         employee[2] = new Employee("Петя", 3, 20222, Employee.counter);
         employee[3] = new Employee("Вася", 4, 20120, Employee.counter);
         employee[4] = new Employee("Кирилл", 5, 20310, Employee.counter);
-        employee[5] = new Employee("Василий", 1, 150_000, Employee.counter);
+        employee[5] = new Employee("Василий", 2, 150_000, Employee.counter);
         employee[6] = new Employee("Кирилл", 2, 200, Employee.counter);
         employee[7] = new Employee("Петя", 3, 20222, Employee.counter);
-        employee[8] = new Employee("Вася", 4, 20120, Employee.counter);
+        employee[8] = new Employee("Вася", 1, 20120, Employee.counter);
         employee[9] = new Employee("Кирилл", 5, 20310, Employee.counter);
         getAListOfAllEmployee();
         System.out.println("total = " + totalSalary());
@@ -22,7 +22,8 @@ public class Main {
         printNameEmployee();
         average();
         indexing(10);
-        System.out.println("getAMaximumWageEmployee(2) = " + getAMaximumWageEmployee(2));
+        System.out.println("getAMaximumWageEmployee(2) = " + getAMaximumWageEmployee(3));
+        System.out.println("findTheAverageSalaryByDepartment(1) = " + findTheAverageSalaryByDepartment(3));
 
     }
 
@@ -136,9 +137,23 @@ public class Main {
             if (employee.getDepartment() == department) {
                 sum += employee.getSalary();
             }
-
         }
         return sum;
+    }
+
+    public static double findTheAverageSalaryByDepartment(int department) {
+        double sum = 0;
+        int counter = 0;
+        double average = 0;
+        for (Employee employee : employee) {
+            if(employee!=null&& employee.getDepartment() == department){
+                sum+=employee.getSalary();
+                counter++;
+                average = sum/counter;
+            }
+
+        }
+        return average;
     }
 
 }

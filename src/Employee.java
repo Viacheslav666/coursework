@@ -10,7 +10,7 @@ public class Employee {
     public Employee(String name, int department, int salary, int id) {
         this.name = name;
         this.id = counter++;
-        this.department = validateDepartment(department);
+        this.department = department;
         this.salary = salary;
     }
     public String getName() {
@@ -53,7 +53,7 @@ public class Employee {
     }
 
     public int   validateDepartment(int department) {
-        return this.department <1 || this.department > 5 ? 1: this.department;
+        return this.department <= 1 || this.department > 5 ? 1 : this.department;
     }
 }
 
