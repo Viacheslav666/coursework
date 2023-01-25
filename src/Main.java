@@ -24,6 +24,9 @@ public class Main {
         indexing(10);
         System.out.println("getAMaximumWageEmployee(2) = " + getAMaximumWageEmployee(3));
         System.out.println("findTheAverageSalaryByDepartment(1) = " + findTheAverageSalaryByDepartment(3));
+        indexSalaryEmployee(2, 5);
+        printEmploee(5);
+        searchMinSalary(2);
 
     }
 
@@ -146,16 +149,47 @@ public class Main {
         int counter = 0;
         double average = 0;
         for (Employee employee : employee) {
-            if(employee!=null&& employee.getDepartment() == department){
-                sum+=employee.getSalary();
+            if (employee != null && employee.getDepartment() == department) {
+                sum += employee.getSalary();
                 counter++;
-                average = sum/counter;
+                average = sum / counter;
             }
 
         }
         return average;
     }
 
+    public static void indexSalaryEmployee(int department, int percent) {
+
+        for (Employee employee : employee) {
+            if (department == employee.getDepartment() && percent != 0) {
+                int cureentSalary = employee.getSalary();
+                employee.setSalary((int) (cureentSalary * (percent / 100f + 1)));
+                System.out.println(employee.getName() + employee.getSalary());
+            }
+        }
+    }
+
+    public static void printEmploee(int department) {
+        for (Employee employee : employee) {
+            if (employee.getDepartment() == department) {
+                System.out.println("Имя " + employee.getName() + " Зарплата " + employee.getSalary() + " ID " + employee.getId());
+            }
+        }
+    }
+
+    public static void searchMinSalary(int number) {
+        for (Employee employee1 : employee) {
+            if (number == 0) {
+                System.out.println("The number cannot be zero ");
+                break;
+            }else {
+                if (employee1.getSalary() > number) {
+                    System.out.println("Name " + employee1.getName() + " Salary " + employee1.getSalary() + " ID " + employee1.getId());
+                }
+            }
+        }
+    }
 }
 
 
